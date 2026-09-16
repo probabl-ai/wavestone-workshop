@@ -219,4 +219,8 @@ __marimo__/
 
 .skore
 
+# Local copy of the Kaggle credit-card dataset (too large for GitHub)
+data/creditcard.csv
+creditcard.csv
+
 .cursor/mcp.json
