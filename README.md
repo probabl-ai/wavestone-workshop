@@ -13,7 +13,9 @@ cd wavestone-workshop
 
 ### 2. Add the data file
 
-Download the [Kaggle credit card fraud dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud/data) (`creditcard.csv`) and place it in `data/` (or at the project root).
+If `data/creditcard.csv` (or `creditcard.csv` at the project root) is already present, skip this step.
+
+Otherwise download the [Kaggle credit card fraud dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud/data) (`creditcard.csv`) and place it in `data/` (or at the project root).
 
 ### 3. Claim your skore.probabl.ai account
 
