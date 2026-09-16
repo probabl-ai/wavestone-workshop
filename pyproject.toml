@@ -1,0 +1,50 @@
+# Minimal `pyproject.toml` for an ML experimentation workspace.
+#
+# Purpose: declare the local `src/fraud_detection/` as an installable, editable
+# Python package so `from fraud_detection.X import Y` works from any CWD without
+# `PYTHONPATH=src` hacks. Runtime dependencies stay in the env
+# manager's manifest (pixi.toml / poetry / uv / hatch / conda) — this
+# file only describes the package, not its dependencies.
+#
+# Replace `fraud_detection` with the actual package name (kebab-case for
+# `project.name`, snake_case for the `src/fraud_detection/` directory).
+#
+# Install the package in editable mode with the project's environment
+# manager (e.g. `pip install -e .`, or the manager's equivalent) so
+# `from fraud_detection.X import Y` resolves from any working directory.
+
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fraud_detection"
+version = "0.1.0"
+description = "Workspace package for the fraud_detection ML experiments."
+requires-python = ">=3.11"
+dependencies = [
+    "fraud-detection",
+    "pandas>=3.0.5",
+    "pyarrow>=25.0.1",
+    "scikit-learn>=1.9.1",
+    "skore[hub,jupyter]>=0.25.0",
+    "skrub>=0.10.1",
+]
+
+[tool.uv.sources]
+fraud-detection = { path = ".", editable = true }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[dependency-groups]
+agent = [
+    "ipython>=9.17.1",
+    "pyright>=1.1.414",
+]
+dev = [
+    "ipykernel>=7.3.0",
+    "jupyterlab>=4.6.3",
+    "pytest>=9.1.1",
+    "ruff>=0.16.7",
+]
