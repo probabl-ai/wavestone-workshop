@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fraud_detection"
+version = "0.1.0"
+description = "Credit card fraud detection - Wavestone workshop"
+requires-python = ">=3.11"
+dependencies = [
+    "kagglehub>=1.0.2",
+    "pandas>=3.0.5",
+    "pyarrow>=25.0.1",
+    "scikit-learn>=1.9.1",
+    "skore[hub,jupyter]>=0.25.0",
+    "skrub>=0.10.1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fraud_detection"]
+
+[dependency-groups]
+agent = [
+    "ipython>=9.17.1",
+    "pyright>=1.1.414",
+]
+dev = [
+    "ipykernel>=7.3.0",
+    "jupyterlab>=4.6.3",
+    "pytest>=9.1.1",
+    "ruff>=0.16.7",
+]
