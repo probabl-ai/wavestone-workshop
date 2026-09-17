@@ -29,6 +29,17 @@ Install the `skore-cli` package and start the agent with `uv`. For this workshop
 uvx --from skore-cli skore agent --harness opencode --hub-url https://saint-gobain.api.skore.probabl.ai
 ```
 
+or use copilot: 
+Then, to start skore-agent on windows powershell:
+- in cli: `.\skore-copilot.ps1 cli`
+- in desktop: `.\skore-copilot.ps1 desktop` and follow the instructions.
+- in vscode: `.\skore-copilot.ps1 vscode` and follow the instructions.
+
+To start skore-agent on unix terminal:
+- in cli: `./skore-copilot cli`
+- in desktop: `./skore-copilot desktop` and follow the instructions.
+- in vscode: `./skore-copilot vscode` and follow the instructions.
+
 When prompted, select the **workshop-wavestone** workspace. Other assistants (Claude Code, Pi, Copilot, Codex) are available if you omit `--harness opencode` and pick one interactively.
 
 ## Iterate, then validate
