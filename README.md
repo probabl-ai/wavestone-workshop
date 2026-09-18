@@ -4,24 +4,40 @@ Credit-card fraud detection with [skore](https://skore.probabl.ai). Participants
 
 ## Setup
 
-### 1. Clone the project repository
+### 1. Install Git LFS
+
+Install [Git LFS](https://git-lfs.com/) before cloning the repository. On macOS, use Homebrew:
+
+```bash
+brew install git-lfs
+```
+
+On Windows, download and install Git LFS from [git-lfs.com](https://git-lfs.com/). Then enable it for Git:
+
+```bash
+git lfs install
+```
+
+### 2. Clone the project repository
 
 ```bash
 git clone https://github.com/probabl-ai/wavestone-workshop.git ./wavestone-workshop/
 cd wavestone-workshop
 ```
 
-### 2. Add the data file
+Git LFS will automatically download the repository's LFS-tracked files during the clone.
+
+### 3. Add the data file
 
 If `data/creditcard.csv` (or `creditcard.csv` at the project root) is already present, skip this step.
 
 Otherwise download the [Kaggle credit card fraud dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud/data) (`creditcard.csv`) and place it in `data/` (or at the project root).
 
-### 3. Claim your skore.probabl.ai account
+### 4. Claim your skore.probabl.ai account
 
 Make sure you received an email invitation to join the **workshop-wavestone** workspace on skore.probabl.ai. Follow the account creation steps. You will then be able to access [https://saint-gobain.skore.probabl.ai/workshop-wavestone](https://saint-gobain.skore.probabl.ai/workshop-wavestone).
 
-### 4. Launch the skore agent
+### 5. Launch the skore agent
 
 Install the `skore-cli` package and start the agent with `uv`. For this workshop, use the OpenCode harness:
 
