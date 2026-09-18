@@ -31,7 +31,7 @@ If `./download-data` prints `Permission denied`, run `chmod +x download-data` an
 
 ### 3. Claim your skore.probabl.ai account
 
-Make sure you received an email invitation to join the **workshop-wavestone** workspace on skore.probabl.ai. Follow the account creation steps. You will then be able to access [https://workshop.probabl.ai/workshop-wavestone](https://workshop.probabl.ai/workshop-wavestone).
+Make sure you received an email invitation to join the **workshop-wavestone** workspace on skore.probabl.ai. Follow the account creation steps. You will then be able to access [https://workshop.probabl.ai/workshop-wavestone](https://workshop.probabl.ai/workshop-wavestone). Accept the [invitation](https://api.workshop.probabl.ai/identity/invitations/8c63c6cf-2bb1-47d9-8572-ce6d2013b98f?success_uri=https://workshop.probabl.ai/login/success).
 
 ### 4. Launch the skore agent
 
