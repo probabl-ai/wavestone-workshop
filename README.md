@@ -92,3 +92,6 @@ Once the setup is done, start prompting the agent. It will guide you through eac
 
 - **Metric:** The ranking metric is **AUPRC** (area under the precision-recall curve). Instruct the agent to **create a custom AUPRC metric** and use it for all evaluation and comparison. Accuracy is not a valid ranking metric here — the target class is rare (~0.173% fraud).
 
+## Leaderboard
+
+You can view the leaderboard of everyone's experiments ranked by AUPRC here: [Leaderboard](https://leaderboard.probabl.ai/d/wavestone-workshop)
