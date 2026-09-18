@@ -5,7 +5,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 MODEL_ID="skore-agent"
-SKORE_HUB_URL="https://workshop.api.skore.probabl.ai"
+SKORE_HUB_URL="https://api.workshop.probabl.ai"
 FORCE=0
 MODE=""
 RESUME=""
@@ -67,12 +67,21 @@ if [[ -n "$RESUME" && "$MODE" != "cli" ]]; then
   exit 1
 fi
 
+# skore agent skips the workspace TUI when it detects CI or an agent runtime.
+# Cursor's integrated terminal sets CURSOR_AGENT, which triggered that.
+run_skore() {
+  env -u CI -u CURSOR_AGENT -u CLAUDECODE -u CODEX_SANDBOX \
+    -u GEMINI_CLI -u OPENCODE_CLIENT -u PI_CODING_AGENT \
+    skore "$@"
+}
+
 if [[ "$MODE" == "vscode" ]]; then
   command -v skore >/dev/null || {
     echo "skore is not on PATH (need skore-cli with --harness copilot)." >&2
     exit 1
   }
-  exec skore agent --harness copilot --workspace "$ROOT" --hub-url "$SKORE_HUB_URL"
+  run_skore agent --harness copilot --workspace "$ROOT" --hub-url "$SKORE_HUB_URL"
+  exit $?
 fi
 
 SKORE_FILE="$ROOT/.skore"
@@ -99,7 +108,7 @@ EOF
   cp "$shadow/code" "$shadow/code-insiders"
 
   echo "Running skore agent --harness copilot (VS Code window suppressed; may still write user chatLanguageModels.json)..."
-  PATH="$shadow:$PATH" skore agent --harness copilot --workspace "$ROOT" --model-id "$MODEL_ID" --hub-url "$SKORE_HUB_URL"
+  PATH="$shadow:$PATH" run_skore agent --harness copilot --workspace "$ROOT" --model-id "$MODEL_ID" --hub-url "$SKORE_HUB_URL"
   cleanup_shadow
   trap - EXIT
 }

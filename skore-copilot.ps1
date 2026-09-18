@@ -62,6 +62,15 @@ if (-not (Get-Command skore -ErrorAction SilentlyContinue)) {
     Write-Error "skore is not on PATH (need skore-cli with --harness copilot)."
 }
 
+# skore agent skips the workspace TUI when it detects CI or an agent runtime.
+# Cursor's integrated terminal sets CURSOR_AGENT, which triggered that.
+foreach ($name in @(
+        "CI", "CURSOR_AGENT", "CLAUDECODE", "CODEX_SANDBOX",
+        "GEMINI_CLI", "OPENCODE_CLIENT", "PI_CODING_AGENT"
+    )) {
+    Remove-Item "Env:$name" -ErrorAction SilentlyContinue
+}
+
 if ($Mode -eq "vscode") {
     & skore agent --harness copilot --workspace $Root --hub-url $SkoreHubUrl
     exit $LASTEXITCODE

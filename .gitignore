@@ -224,3 +224,5 @@ data/creditcard.csv
 creditcard.csv
 
 .cursor/mcp.json
+
+.vscode/chatLanguageModels.json
