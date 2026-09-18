@@ -11,7 +11,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 $Root = (Resolve-Path $PSScriptRoot).Path
-$SkoreHubUrl = "https://workshop.api.skore.probabl.ai"
+$SkoreHubUrl = "https://api.workshop.probabl.ai"
 $Resume = ""
 
 function Show-Usage {
