@@ -4,67 +4,91 @@ Credit-card fraud detection with [skore](https://skore.probabl.ai). Participants
 
 ## Setup
 
-### 1. Install Git LFS
-
-Install [Git LFS](https://git-lfs.com/) before cloning the repository. On macOS, use Homebrew:
+### 1. Clone the project repository
 
 ```bash
-brew install git-lfs
-```
-
-On Windows, download and install Git LFS from [git-lfs.com](https://git-lfs.com/). Then enable it for Git:
-
-```bash
-git lfs install
-```
-
-### 2. Clone the project repository
-
-```bash
-git clone https://github.com/probabl-ai/wavestone-workshop.git ./wavestone-workshop/
+git clone https://github.com/probabl-ai/wavestone-workshop.git
 cd wavestone-workshop
 ```
 
-Git LFS will automatically download the repository's LFS-tracked files during the clone.
+### 2. Add the data file
 
-### 3. Add the data file
+If `data/creditcard.csv` is already present, skip this step.
 
-If `data/creditcard.csv` (or `creditcard.csv` at the project root) is already present, skip this step.
-
-Otherwise download the [Kaggle credit card fraud dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud/data) (`creditcard.csv`) and place it in `data/` (or at the project root).
-
-### 4. Claim your skore.probabl.ai account
-
-Make sure you received an email invitation to join the **workshop-wavestone** workspace on skore.probabl.ai. Follow the account creation steps. You will then be able to access [https://saint-gobain.skore.probabl.ai/workshop-wavestone](https://saint-gobain.skore.probabl.ai/workshop-wavestone).
-
-### 5. Launch the skore agent
-
-Install the `skore-cli` package and start the agent with `uv`. For this workshop, use the OpenCode harness:
+**macOS / Linux**
 
 ```bash
-uvx --from skore-cli skore agent --harness opencode --hub-url https://saint-gobain.api.skore.probabl.ai
+./download-data
 ```
 
-or use copilot: 
-Then, to start skore-agent on windows powershell:
-- in cli: `.\skore-copilot.ps1 cli`
-- in desktop: `.\skore-copilot.ps1 desktop` and follow the instructions.
-- in vscode: `.\skore-copilot.ps1 vscode` and follow the instructions.
+If `./download-data` prints `Permission denied`, run `chmod +x download-data` and retry.
 
-To start skore-agent on unix terminal:
-- in cli: `./skore-copilot cli`
-- in desktop: `./skore-copilot desktop` and follow the instructions.
-- in vscode: `./skore-copilot vscode` and follow the instructions.
+**Windows (PowerShell)**
 
-When prompted, select the **workshop-wavestone** workspace. Other assistants (Claude Code, Pi, Copilot, Codex) are available if you omit `--harness opencode` and pick one interactively.
+```powershell
+.\download-data.ps1
+```
+
+### 3. Claim your skore.probabl.ai account
+
+Make sure you received an email invitation to join the **workshop-wavestone** workspace on skore.probabl.ai. Follow the account creation steps. You will then be able to access [https://workshop.probabl.ai/workshop-wavestone](https://workshop.probabl.ai/workshop-wavestone).
+
+### 4. Launch the skore agent
+
+Install `[skore-cli](https://pypi.org/project/skore-cli/)` so the `skore` command is on your `PATH`:
+
+```bash
+pip install skore-cli
+```
+
+This workshop uses **GitHub Copilot** — CLI, desktop app, or VS Code.
+
+**macOS / Linux**
+
+```bash
+./skore-copilot cli        # Copilot CLI
+./skore-copilot desktop    # GitHub Copilot desktop app — follow the printed steps
+./skore-copilot vscode     # VS Code + Copilot
+```
+
+If `./skore-copilot` prints `Permission denied`, run `chmod +x skore-copilot` and retry.
+
+**Windows (PowerShell)**
+
+```powershell
+.\skore-copilot.ps1 cli
+.\skore-copilot.ps1 desktop
+.\skore-copilot.ps1 vscode
+```
+
+When prompted, select the **workshop-wavestone** workspace.
+
+## Look at the Hub while you wait
+
+You do not need a finished model first. As soon as your account is ready, open the [workshop-wavestone workspace](https://workshop.probabl.ai/workshop-wavestone).
+
+While the agent is running EDA or a first baseline, browse the **pre-pushed experiments** so you can see what a Hub report looks like:
+
+- `[wavestone-cv](https://workshop.probabl.ai/workshop-wavestone)` — cross-validation reports
+- `[wavestone-leaderboard](https://workshop.probabl.ai/workshop-wavestone)` — fitted estimators scored on the held-out test set
+
+![Skore Hub project: a table of reports you can open and compare](docs/images/hub-reports.png)
+
+Those two projects are the destination for your own pushes later. Do not mix them: no CV reports on `wavestone-leaderboard`, no fitted/test reports on `wavestone-cv`.
+
+A live leaderboard will also be displayed in the room, updated each time a participant pushes a model.
+
+## Steer the agent from `journal/JOURNAL.md`
+
+After the first agent turn, a `journal/` directory appears. **Open** `journal/JOURNAL.md` **and keep it open.** This is the index the agent writes as it works: current status, EDA summary, experiment history, and the backlog of next ideas.
+
+![Example journal/JOURNAL.md with status, EDA, history, and a backlog](docs/images/journal.png)
+
+Read it, then tell the agent what to do next — for example “run B2” or “keep the current splitter”. If you never open this file, you are not piloting the agent.
 
 ## Iterate, then validate
 
 Once the setup is done, start prompting the agent. It will guide you through each step: feature engineering, model choice, cross-validation, evaluation, and each subsequent iteration.
 
-- **Hub mode:** When the agent asks whether you prefer working locally or synchronizing with the hub, select **hub**.
 - **Metric:** The ranking metric is **AUPRC** (area under the precision-recall curve). Instruct the agent to **create a custom AUPRC metric** and use it for all evaluation and comparison. Accuracy is not a valid ranking metric here — the target class is rare (~0.173% fraud).
 
-## Browse the reports
-
-Head to [https://saint-gobain.skore.probabl.ai/workshop-wavestone](https://saint-gobain.skore.probabl.ai/workshop-wavestone) to browse your model reports and those of other participants. A live leaderboard will be displayed in the room, updated each time a participant pushes a model to the hub.

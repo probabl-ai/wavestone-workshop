@@ -148,7 +148,7 @@ activemq-data/
 *.sage.py
 
 # Environments
-.env
+# .env is tracked here (FILE_ID only; do not put secrets in it)
 .envrc
 .venv
 env/
@@ -219,9 +219,11 @@ __marimo__/
 
 .skore
 
-# Local copy of the Kaggle credit-card dataset (too large for GitHub)
-data/creditcard.csv
+# Local dataset downloaded from Drive (see AGENT.md)
+data/*.csv
+data/*.zip
 creditcard.csv
+creditcard.csv.zip
 
 .cursor/mcp.json
 
