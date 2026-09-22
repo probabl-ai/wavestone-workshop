@@ -20,7 +20,7 @@ python download-data
 ### 3. Claim your skore.probabl.ai account
 
 Accept the [invitation](https://api.workshop.probabl.ai/identity/invitations/8c63c6cf-2bb1-47d9-8572-ce6d2013b98f?success_uri=https://workshop.probabl.ai/login/success).
-If you already have an account, just login. If you don't, creare one. Once you clicked the invitation, you should see the **[workshop-wavestone** workspace](https://workshop.probabl.ai/workshop-wavestone) on your skore interface.
+If you already have an account, just login. If you don't, creare one. Once you clicked the invitation, you should see the **[workshop-wavestone workspace](https://workshop.probabl.ai/workshop-wavestone)** on your skore interface.
 
 ### 4. Launch the skore agent
 
@@ -46,6 +46,26 @@ You are now ready to create your first model!
 Once the setup is done, start prompting the agent. It will guide you through each step: feature engineering, model choice, cross-validation, evaluation, and each subsequent iteration.
 
 **Metric:** The ranking metric is **AUPRC** (area under the precision-recall curve). Instruct the agent to **create a custom AUPRC metric** and to use it for all evaluation and comparison. Accuracy is not a valid ranking metric here — the target class is rare (~0.173% fraud).
+
+# Example prompts
+To explore the data and run EDA:
+```
+Hello, I'd like to explore my data before running a baseline.
+```
+
+To start a baseline experiment:
+```
+Please help me setup and run a baseline experiment to predict
+fraudulent transactions that I can iterate and improve on afterwards.
+```
+
+To try TabICL on your tabular problem:
+```
+I’d like to try TabICL on my fraud prediction dataset.
+Please help me:
+- Check if my data format is compatible with TabICL.
+- Set up a minimal example that loads my data and runs TabICL for binary classification.
+```
 
 # What to do when the agent is running: look at the Hub
 
