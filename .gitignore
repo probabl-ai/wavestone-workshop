@@ -22,5 +22,28 @@ env/
 # data
 data/*.csv
 
+# Agent scratch space — throwaway probes, not deliverables
+scratch/
+
+# Generated skore reports (hub mode sends these to the Hub; local copies are not source)
+reports/
+
+# Coverage reports
+coverage.xml
+nosetests.xml
+.tox/
+.nox/
+
+# MLflow local tracker
+mlruns/
+mlartifacts/
+*.db
+*.db-journal
+
+# Notebooks (experiments live in experiments/ as # %% scripts)
+*.ipynb
+
 # Editor / OS
 .DS_Store
+
+.claude/settings.local.json

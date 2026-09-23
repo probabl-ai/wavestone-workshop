@@ -11,11 +11,9 @@ cd wavestone-workshop
 
 ### 2. Data
 
-The dataset is in the repo as two zips. Join them into `data/creditcard.csv` with the python script:
-
-```bash
-python download-data
-```
+The dataset is an 80/20 holdout. 
+Fit on `train.csv.bz2` and score `test.csv.bz2`.
+Never train on `test.csv.bz2`.
 
 ### 3. Claim your skore.probabl.ai account
 
